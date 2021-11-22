@@ -27,8 +27,8 @@ class BookItem extends React.Component {
             <Typography gutterBottom variant="h5" component="div">
               { this.props.book_title }
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              { this.props.book_description }
+            <Typography sx={{ fontSize: 14, fontWeight: 'medium' }} color="text.secondary">
+              { this.props.book_price }
             </Typography>
           </CardContent>
           <CardActions>

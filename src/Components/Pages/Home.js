@@ -12,12 +12,22 @@ export default function Home() {
     {
       "book_author": "Aristotle",
       "book_title": "Politics: A Treatise on Government",
-      "book_description": "The aim of the Politics, Aristotle says, is to investigate, on the basis of the constitutions collected, what makes for good government and what makes for bad government and to identify the factors favourable or unfavourable to the preservation of a constitution. Aristotle asserts that all communities aim at some good."
+      "book_price": "Rp. 135.000"
     },
     {
       "book_author": "Aristotle",
       "book_title": "The Ethics of Aristotle",
-      "book_description": "Aristotle's ethics, or study of character, is built around the premise that people should achieve an excellent character as a pre-condition for attaining happiness or well-being."
+      "book_price": "Rp. 135.000"
+    },
+    {
+      "book_author": "Robert T. Kiyosaki",
+      "book_title": "Rich Dad Poor Dad",
+      "book_price": "Rp. 219.000"
+    },
+    {
+      "book_author": "Ilana Tan",
+      "book_title": "The Star and I",
+      "book_price": "Rp. 99.000"
     },
   ];
   return (
@@ -34,7 +44,7 @@ export default function Home() {
               key={id}
               book_author={data['book_author']}
               book_title={data['book_title']}
-              book_description={data['book_description']}
+              book_price={data['book_price']}
             />
           ))}
         </ListBookItem>
