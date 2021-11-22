@@ -12,12 +12,13 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-import Sidebar from './Components/Sidebar';
+// import Sidebar from './Components/Sidebar';
 import Home from './Components/Pages/Home';
+import BottomNav from './Components/BottomNav';
 
 function App() {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', pb: 7 }}>
       <CssBaseline/>
       <AppBar
         position="fixed"
@@ -29,8 +30,8 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Sidebar/>
       <Home />
+      <BottomNav />
     </Box>
   );
 }
