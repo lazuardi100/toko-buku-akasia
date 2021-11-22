@@ -27,7 +27,7 @@ export default function Home() {
     >
       <Toolbar />
       <CssBaseline />
-      <Container maxWidth="xl">
+      <Container maxWidth="md">
         <ListBookItem>
           {tempData.map((data, id) => (
             <BookItem
