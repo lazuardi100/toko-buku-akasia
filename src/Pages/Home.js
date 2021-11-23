@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 
-import ListBookItem from '../Book/ListBookItem';
-import BookItem from '../Book/BookItem';
+import ListBookItem from '../Components/Book/ListBookItem';
+import BookItem from '../Components/Book/BookItem';
 
 export default function Home() {
   const tempData = [
