@@ -8,10 +8,14 @@ import Typography from '@mui/material/Typography';
 
 // import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
+import Payment from './Pages/Payment';
 import BottomNav from './Components/BottomNav';
 
 // import {getDatabase, push, ref, child, update} from "firebase/database";
 // import data from './data.json'
+
+// Importing React-Router for Routing
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -31,23 +35,27 @@ function App() {
   //   console.log(`Buku ${data.title} berhasil diinput`);
   // }
   return (
-
-    <Box sx={{ display: 'flex', pb: 7 }}>
-      <CssBaseline/>
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Toko Buku Akasia
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Home />
-      {/* <Button onClick={prepareData} variant="contained">Import Database</Button> */}
-      <BottomNav />
-    </Box>
+    <Router>
+      <Box sx={{ display: 'flex', pb: 7 }}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        >
+          <Toolbar>
+            <Typography variant="h6" noWrap component="div">
+              Toko Buku Akasia
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route path='/payment' element={<Payment />} />
+        </Routes>
+        {/* <Button onClick={prepareData} variant="contained">Import Database</Button> */}
+        <BottomNav />
+      </Box>
+    </Router>
   );
 }
 
