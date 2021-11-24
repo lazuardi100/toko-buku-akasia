@@ -4,33 +4,32 @@ import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 
 // import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
 import BottomNav from './Components/BottomNav';
 
-import {getDatabase, push, ref, child, update} from "firebase/database";
-import data from './data.json'
+// import {getDatabase, push, ref, child, update} from "firebase/database";
+// import data from './data.json'
 
 function App() {
-  
 
-  function prepareData(){
-    data.forEach(val => {
-      importDB(val)
-    })
-  }
-  function importDB(data){
-    const db = getDatabase();
+  // function prepareData(){
+  //   data.forEach(val => {
+  //     importDB(val)
+  //   })
+  // }
+  // function importDB(data){
+  //   const db = getDatabase();
 
-    let value = push(child(ref(db), 'book')).key;
-    const datainput ={}
-    datainput['/books/'+value] = data;
+  //   let value = push(child(ref(db), 'book')).key;
+  //   const datainput ={}
+  //   datainput['/books/'+value] = data;
 
-    update(ref(db), datainput);
-    console.log(`Buku ${data.title} berhasil diinput`);
-  }
+  //   update(ref(db), datainput);
+  //   console.log(`Buku ${data.title} berhasil diinput`);
+  // }
   return (
 
     <Box sx={{ display: 'flex', pb: 7 }}>
@@ -51,7 +50,5 @@ function App() {
     </Box>
   );
 }
-
-
 
 export default App;
