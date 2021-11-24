@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 // import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
 import Payment from './Pages/Payment';
+import PaymentDetail from './Pages/PaymentDetail';
 import Cart from './Pages/Cart';
 import BottomNav from './Components/BottomNav';
 
@@ -51,6 +52,8 @@ function App() {
         </AppBar>
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route path='/payment' element={<Payment price='20.000' />} />
+          <Route path='/paymentDetail/:bank' element={<PaymentDetail />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/cart' element={<Cart />} />
         </Routes>
