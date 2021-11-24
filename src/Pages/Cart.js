@@ -33,9 +33,7 @@ export default function Cart() {
             <Toolbar />
             <CssBaseline />
             <Container maxWidth="md">
-                <Typography variant="h3" component="div" gutterBottom>
-                Keranjang Belanja 
-                </Typography>
+            <h2>Keranjang Belanja</h2>
                 <ListCartItem>
                 {tempData.map((data, id) => (
                     <CartItem
@@ -49,7 +47,7 @@ export default function Cart() {
                 {tempData.forEach(function(value){
                     totalPrice += value.book_price;
                 })}
-                <Typography variant="h6" component="div" alignCenter gutterBottom> Total Pembayaran Rp.{totalPrice} </Typography>
+                <h2> Total Pembayaran Rp.{totalPrice} </h2>
                 <Button alignCenter>Lanjutkan Pembelian</Button>
             </Container>
         </Box>

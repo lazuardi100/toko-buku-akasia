@@ -27,7 +27,7 @@ class CartItem extends React.Component {
               { this.props.book_title }
             </Typography>
             <Typography sx={{ fontSize: 14, fontWeight: 'medium' }} color="text.secondary">
-              { this.props.book_price }
+              Rp. { this.props.book_price }
             </Typography>
           </CardContent>
           <CardActions>
