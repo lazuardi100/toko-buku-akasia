@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, CardContent, CardActions, Typography } from "@mui/material";
-
 import { Link } from 'react-router-dom';
 
 function CardPayment({ bank, rekening }) {

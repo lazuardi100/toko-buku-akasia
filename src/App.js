@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Home from './Pages/Home';
 import Payment from './Pages/Payment';
 import PaymentDetail from './Pages/PaymentDetail';
+import Cart from './Pages/Cart';
 import BottomNav from './Components/BottomNav';
 
 // import {getDatabase, push, ref, child, update} from "firebase/database";
@@ -53,6 +54,8 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/payment' element={<Payment price='20.000' />} />
           <Route path='/paymentDetail/:bank' element={<PaymentDetail />} />
+          <Route path='/payment' element={<Payment />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
         {/* <Button onClick={prepareData} variant="contained">Import Database</Button> */}
         <BottomNav />
