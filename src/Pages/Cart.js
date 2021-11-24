@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import CartItem from '../Components/Payment/CartItem';
 import ListCartItem from '../Components/Payment/CartItem';
 
-export default function Home() {
+export default function Cart() {
     let totalPrice = 0;
     const tempData = [
         {
