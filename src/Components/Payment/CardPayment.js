@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Card, CardContent, CardActions, Typography, Button } from "@mui/material";
 
 function CardPayment({ bank, rekening }) {
