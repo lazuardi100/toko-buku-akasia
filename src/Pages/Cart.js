@@ -46,7 +46,7 @@ export default function Cart() {
                 {tempData.forEach(function(value){
                     totalPrice += value.book_price;
                 })}
-                <h4> Total Pembayaran Rp.{totalPrice} </h4>
+                <h3> Total Pembayaran Rp.{totalPrice} </h3>
                 <Button alignCenter>Lanjutkan Pembelian</Button>
             </Container>
         </Box>
