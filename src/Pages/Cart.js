@@ -8,8 +8,8 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 
-import CartItem from '../Components/Payment/CartItem';
-import ListCartItem from '../Components/Payment/CartItem';
+import CartItem from '../Components/Cart/CartItem';
+import ListCartItem from '../Components/Cart/ListCartItem';
 
 export default function Cart() {
     let totalPrice = 0;
