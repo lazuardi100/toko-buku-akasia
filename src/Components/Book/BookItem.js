@@ -12,7 +12,7 @@ class BookItem extends React.Component {
     return (
       <Grid item sm={4} md={4}>
         <Card>
-          <Box sx={{ bgcolor: '#cfe8fc', height: '240px', display: 'flex' }}/>
+          <Box sx={{ bgcolor: '#cfe8fc', height: '240px', display: 'flex' }} />
           {/* <CardMedia
             component="img"
             height="140"
@@ -21,13 +21,13 @@ class BookItem extends React.Component {
           /> */}
           <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-              { this.props.book_author }
+              {this.props.book_author}
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
-              { this.props.book_title }
+              {this.props.book_title}
             </Typography>
             <Typography sx={{ fontSize: 14, fontWeight: 'medium' }} color="text.secondary">
-              { this.props.book_price }
+              {this.props.book_price}
             </Typography>
           </CardContent>
           <CardActions>

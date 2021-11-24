@@ -1,7 +1,10 @@
 import React from 'react';
-import { Card, CardContent, CardActions, Typography, Button } from "@mui/material";
+import { Card, CardContent, CardActions, Typography } from "@mui/material";
+
+import { Link } from 'react-router-dom';
 
 function CardPayment({ bank, rekening }) {
+    console.log(bank);
     return (
         <>
             <Card>
@@ -9,7 +12,7 @@ function CardPayment({ bank, rekening }) {
                     <Typography>{bank}  {rekening}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Pilih</Button>
+                    <Link to={`/paymentDetail/${bank}`} state={{ rekening }}>Pilih</Link>
                 </CardActions>
             </Card>
         </>
