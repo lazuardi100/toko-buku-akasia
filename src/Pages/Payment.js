@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -40,11 +40,16 @@ export default function Home(props) {
                 <h3>Pilih Metode Pembayaran</h3>
                 <p>Pilih metode pembayaran dan pastikan rekening ini adalah milik kamu ya</p>
                 <h4>Total Harga Rp. {props.price ? props.price : "200.000"} </h4>
-                {bankData.map((data) => (
-                    <>
-                        <CardPayment bank={data["bank"]} rekening={data["rekening"]} />
+                {bankData.map((data, id) => (
+                    <React.Fragment
+                        key={id}
+                    >
+                        <CardPayment
+                            bank={data["bank"]}
+                            rekening={data["rekening"]}
+                        />
                         <br />
-                    </>
+                    </React.Fragment>
                 ))}
             </Container>
         </Box>
