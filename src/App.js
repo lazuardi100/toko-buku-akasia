@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 // import Sidebar from './Components/Sidebar';
 import Home from './Pages/Home';
 import Payment from './Pages/Payment';
+import Checkout from './Pages/Checkout';
 import BottomNav from './Components/BottomNav';
 
 // import {getDatabase, push, ref, child, update} from "firebase/database";
@@ -51,6 +52,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/payment' element={<Payment />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
         {/* <Button onClick={prepareData} variant="contained">Import Database</Button> */}
         <BottomNav />
