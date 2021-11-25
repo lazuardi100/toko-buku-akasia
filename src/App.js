@@ -53,9 +53,8 @@ function App() {
         </AppBar>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/payment' element={<Payment price='20.000' />} />
-          <Route path='/paymentDetail/:bank' element={<PaymentDetail />} />
           <Route path='/payment' element={<Payment />} />
+          <Route path='/paymentDetail/:bank' element={<PaymentDetail />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/cart' element={<Cart />} />
         </Routes>

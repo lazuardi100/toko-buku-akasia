@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 export default function Home() {
     const { bank } = useParams();
@@ -31,7 +31,7 @@ export default function Home() {
                 <h5>Tanggal: {date}</h5>
                 <h5>Jumlah Transfer: 20.000</h5>
                 <h5>Biaya Admin: Gratis</h5>
-                <Button>Bayar</Button>
+                <Button fullWidth variant="contained" component={Link} to="/">Bayar</Button>
             </Container>
         </Box>
     );

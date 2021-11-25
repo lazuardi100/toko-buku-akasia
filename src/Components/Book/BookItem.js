@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import { Link } from 'react-router-dom';
+
 class BookItem extends React.Component {
   render() {
     return (
@@ -31,7 +33,7 @@ class BookItem extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Beli</Button>
+            <Button size="small" component={Link} to="/checkout">Beli</Button>
           </CardActions>
         </Card>
       </Grid>

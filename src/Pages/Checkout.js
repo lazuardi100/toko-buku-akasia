@@ -12,44 +12,46 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 
+import { Link } from 'react-router-dom';
+
 export default function Checkout() {
     const tempData = [
         {
-          "book_author": "Aristotle",
-          "book_title": "Politics: A Treatise on Government",
-          "book_price": "Rp. 135.000"
+            "book_author": "Aristotle",
+            "book_title": "Politics: A Treatise on Government",
+            "book_price": "Rp. 135.000"
         },
         {
-          "book_author": "Aristotle",
-          "book_title": "The Ethics of Aristotle",
-          "book_price": "Rp. 135.000"
+            "book_author": "Aristotle",
+            "book_title": "The Ethics of Aristotle",
+            "book_price": "Rp. 135.000"
         },
         {
-          "book_author": "Robert T. Kiyosaki",
-          "book_title": "Rich Dad Poor Dad",
-          "book_price": "Rp. 219.000"
+            "book_author": "Robert T. Kiyosaki",
+            "book_title": "Rich Dad Poor Dad",
+            "book_price": "Rp. 219.000"
         },
         {
-          "book_author": "Ilana Tan",
-          "book_title": "The Star and I",
-          "book_price": "Rp. 99.000"
+            "book_author": "Ilana Tan",
+            "book_title": "The Star and I",
+            "book_price": "Rp. 99.000"
         },
-      ];
-    return(
+    ];
+    return (
         <Box
             component="main"
-            sx={{ flexGrow: 1, bgcolor: 'background.default',p: 3 }}
+            sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
         >
             <Toolbar />
             <CssBaseline />
             <Container maxWidth="md">
                 <h3>Alamat Pengiriman</h3>
-                <TextField fullWidth id="alamat-pengiriman" label="" variant="outlined" placeholder="Alamat Pengiriman"/>
+                <TextField fullWidth id="alamat-pengiriman" label="" variant="outlined" placeholder="Alamat Pengiriman" />
                 <br />
                 <br />
                 <ListCheckoutItem>
-                    {tempData.map((data,id) => (
-                        <CheckoutItem 
+                    {tempData.map((data, id) => (
+                        <CheckoutItem
                             key={id}
                             book_author={data['book_author']}
                             book_title={data['book_title']}
@@ -71,10 +73,10 @@ export default function Checkout() {
                 </FormControl>
                 <br />
                 <br />
-                <TextField fullWidth id="kupon" label="" variant="outlined" placeholder="Masukkan Kupon"/>
+                <TextField fullWidth id="kupon" label="" variant="outlined" placeholder="Masukkan Kupon" />
                 <br />
                 <br />
-                <Button fullWidth variant="contained">Pilih Pembayaran</Button>
+                <Button fullWidth variant="contained" component={Link} to="/payment">Pilih Pembayaran</Button>
             </Container>
         </Box>
     );
