@@ -7,48 +7,79 @@ import Toolbar from '@mui/material/Toolbar';
 import ListBookItem from '../Components/Book/ListBookItem';
 import BookItem from '../Components/Book/BookItem';
 
-export default function Home() {
-  const tempData = [
-    {
-      "book_author": "Aristotle",
-      "book_title": "Politics: A Treatise on Government",
-      "book_price": "Rp. 135.000"
-    },
-    {
-      "book_author": "Aristotle",
-      "book_title": "The Ethics of Aristotle",
-      "book_price": "Rp. 135.000"
-    },
-    {
-      "book_author": "Robert T. Kiyosaki",
-      "book_title": "Rich Dad Poor Dad",
-      "book_price": "Rp. 219.000"
-    },
-    {
-      "book_author": "Ilana Tan",
-      "book_title": "The Star and I",
-      "book_price": "Rp. 99.000"
-    },
-  ];
-  return (
-    <Box
-      component="main"
-      sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-    >
-      <Toolbar />
-      <CssBaseline />
-      <Container maxWidth="md">
-        <ListBookItem>
-          {tempData.map((data, id) => (
-            <BookItem
-              key={id}
-              book_author={data['book_author']}
-              book_title={data['book_title']}
-              book_price={data['book_price']}
-            />
-          ))}
-        </ListBookItem>
-      </Container>
-    </Box>
-  )
+import { getDatabase, ref, child, get } from "firebase/database";
+
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      book_data: {
+        'test': {
+          'authors': "Alice",
+          'title': "Sample Book",
+          'average_rating': '5'
+        }
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.getBookData().then((book_data) => {
+      this.setState({
+        book_data: book_data
+      })
+    })
+  }
+
+  getBookData() {
+    return new Promise((res, rej) => {
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, 'books')).then((snapshot) => {
+        if (snapshot.exists()) {
+          res(snapshot.val());
+        } else {
+          rej("No data available")
+        }
+      }).catch((err) => {
+        rej(err)
+      })
+    })
+  }
+
+  generatePrice(x) {
+    let generatedPrice = parseInt(x * 5 * 10000);
+    return `Rp. ${generatedPrice}`
+  }
+
+  render() {
+    let book_list = [];
+    Object.keys(this.state.book_data).forEach((key) => {
+      const data = this.state.book_data[key]
+      book_list.push(
+        <BookItem
+          key={key}
+          book_author={data['authors']}
+          book_title={data['title']}
+          book_price={this.generatePrice(data['average_rating'])}
+        />
+      )
+    })
+
+    return (
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+      >
+        <Toolbar />
+        <CssBaseline />
+        <Container maxWidth="md">
+          <ListBookItem>
+            {book_list}
+          </ListBookItem>
+        </Container>
+      </Box>
+    )
+  }
 }
+
+export default Home;
