@@ -33,7 +33,7 @@ class BookItem extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" component={Link} to="/checkout">Beli</Button>
+            <Button size="small" component={Link} to={"/checkout?"+this.props.isbn}>Beli</Button>
           </CardActions>
         </Card>
       </Grid>

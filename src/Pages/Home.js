@@ -58,6 +58,7 @@ class Home extends React.Component {
       book_list.push(
         <BookItem
           key={key}
+          isbn={data['isbn']}
           book_author={data['authors']}
           book_title={data['title']}
           book_price={this.generatePrice(data['average_rating'])}
