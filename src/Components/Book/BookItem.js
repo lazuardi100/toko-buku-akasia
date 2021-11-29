@@ -51,9 +51,10 @@ class BookItem extends React.Component {
     }
   }
 
-  addToCart(isbn, author, title, price, e) {
+  addToCart(isbn, book_id, author, title, price, e) {
     const book_data = {
       'isbn': isbn,
+      'book_id': book_id,
       'book_author': author,
       'book_title': title,
       'book_price': parseInt(price.slice(4))
@@ -114,10 +115,10 @@ class BookItem extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" component={Link} to={"/checkout?isbn=" + this.props.isbn}>Beli</Button>
+            <Button size="small" component={Link} to={"/checkout?id=" + this.props.book_id}>Beli</Button>
             <Button
               size="small"
-              onClick={this.addToCart.bind(this, this.props.isbn,
+              onClick={this.addToCart.bind(this, this.props.isbn, this.props.book_id,
                 this.props.book_author, this.props.book_title, this.props.book_price)}
             >
               Add to Cart
