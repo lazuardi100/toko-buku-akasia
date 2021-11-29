@@ -11,7 +11,6 @@ import ListCartItem from '../Components/Cart/ListCartItem';
 export default function Cart() {
   let totalPrice = 0;
   const cart = JSON.parse(localStorage.getItem('tba-cart'));
-  console.log(cart);
 
   return (
     <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, }}>
