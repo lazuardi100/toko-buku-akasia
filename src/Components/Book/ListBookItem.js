@@ -5,7 +5,7 @@ class ListBookItem extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ sm: 4, md: 8 }}>
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ sm: 4, md: 12 }}>
                     { this.props.children }
                 </Grid>
             </React.Fragment>
