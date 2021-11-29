@@ -114,7 +114,7 @@ class BookItem extends React.Component {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" component={Link} to={"/checkout?" + this.props.isbn}>Beli</Button>
+            <Button size="small" component={Link} to={"/checkout?isbn=" + this.props.isbn}>Beli</Button>
             <Button
               size="small"
               onClick={this.addToCart.bind(this, this.props.isbn,
