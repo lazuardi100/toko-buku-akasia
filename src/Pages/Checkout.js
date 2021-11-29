@@ -11,12 +11,12 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getDatabase, ref, child, get} from "firebase/database";
 
 class Checkout extends React.Component {
-
+  
     constructor(props) {
         super(props);
         this.state = {
@@ -65,8 +65,10 @@ class Checkout extends React.Component {
               })
           }))
       }
+      
 
       render() {
+        
         var totalPrice = 0
         let checkout_list = [];
         Object.keys(this.state.book_data).forEach((key) => {
@@ -82,6 +84,8 @@ class Checkout extends React.Component {
               book_price= {currency.concat(" ", this.generatePrice(data['average_rating']))}
             />
           )
+        
+
         })
 
         return (
@@ -116,7 +120,12 @@ class Checkout extends React.Component {
                     <TextField fullWidth id="kupon" label="" variant="outlined" placeholder="Masukkan Kupon" />
                     <br />
                     <br />
-                    <Button fullWidth variant="contained" component={Link} to="/payment">Pilih Pembayaran</Button>
+                    {/* <Button fullWidth variant="contained" component={Link} to="/payment">Pilih Pembayaran</Button> */}
+                    <Button fullWidth variant="contained" 
+                      onClick={() => {
+                        this.props.navigate('/payment', {state: {price:totalPrice}});
+                      }}
+                    >Pilih Pembayaran</Button>
                     <br />
                     <br />
                     
@@ -127,4 +136,9 @@ class Checkout extends React.Component {
       }
 }
 
-export default Checkout;
+function WithNavigate(props) {
+  let navigate = useNavigate();
+  return <Checkout {...props} navigate={navigate} />
+}
+
+export default WithNavigate;

@@ -7,7 +7,11 @@ import Typography from '@mui/material/Typography';
 
 import CardPayment from '../Components/Payment/CardPayment';
 
+import { useLocation } from "react-router-dom";
+
 export default function Home(props) {
+  const {state} = useLocation()
+  const { price } = state;
   const bankData = [
     {
       "id": 1,
@@ -62,7 +66,7 @@ export default function Home(props) {
             variant="h6"
             sx={{ pt: "1.5rem" }}
           >
-            Total Harga Rp. {props.price ? props.price : "200.000"}
+            Total Harga Rp. {price}
           </Typography>
         </Box>
         {bankData.map((data, id) => (
