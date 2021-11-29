@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -77,6 +78,8 @@ class BookItem extends React.Component {
   }
 
   render() {
+    const image_url = `https://covers.openlibrary.org/b/isbn/${this.props.isbn}-M.jpg`
+
     const action = (
       <React.Fragment>
         <Button color="secondary" size="small" onClick={this.handleSnackbarUndo}>
@@ -96,26 +99,25 @@ class BookItem extends React.Component {
     return (
       <Grid item sm={4} md={4}>
         <Card>
-          <Box sx={{ bgcolor: '#cfe8fc', height: '240px', display: 'flex' }} />
-          {/* <CardMedia
+          <CardMedia
             component="img"
-            height="140"
-            image={this.props.image_url}
+            height="240"
+            image={image_url}
             alt={this.props.book_title}
-          /> */}
+            sx={{ objectFit: 'contain' }}
+          />
           <CardContent>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
               {this.props.book_author}
             </Typography>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h7" component="div">
               {this.props.book_title}
             </Typography>
             <Typography sx={{ fontSize: 14, fontWeight: 'medium' }} color="text.secondary">
               {this.props.book_price}
             </Typography>
           </CardContent>
-          <CardActions>
-            <Button size="small" component={Link} to={"/checkout?id=" + this.props.book_id}>Beli</Button>
+          <CardActions sx={{ justifyContent: 'end' }}>
             <Button
               size="small"
               onClick={this.addToCart.bind(this, this.props.isbn, this.props.book_id,
@@ -123,6 +125,7 @@ class BookItem extends React.Component {
             >
               Add to Cart
             </Button>
+            <Button size="small" component={Link} to={"/checkout?id=" + this.props.book_id}>Beli</Button>
           </CardActions>
         </Card>
         <Snackbar
