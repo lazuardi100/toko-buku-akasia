@@ -11,12 +11,12 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
-
 import { Link } from 'react-router-dom';
 
 import { getDatabase, ref, child, get} from "firebase/database";
 
 class Checkout extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -29,9 +29,15 @@ class Checkout extends React.Component {
           }
         }
       }
+      
+      getParams() {
+        let parameter = new URLSearchParams( window.location.search );
+        const paramId = parameter.get('id')
+        return paramId.split(';')
+      }
 
       componentDidMount() {
-        this.getBookData(['-MpBvVzSczLWTrVVscDC','-MpBvVzXoPv9IiSpqddI']).then((book_data) => {
+        this.getBookData(this.getParams()).then((book_data) => {
           this.setState({
             book_data: book_data
           })
@@ -43,11 +49,11 @@ class Checkout extends React.Component {
         return `Rp. ${generatedPrice}`
       }
 
-      getBookData(isbn) {
-          return Promise.all(isbn.map(function (isbn) {
+      getBookData(idBook) {
+          return Promise.all(idBook.map(function (idBook) {
             return new Promise((res, rej) => {
                 const dbRef = ref(getDatabase());
-                get(child(dbRef, 'books/' + isbn)).then((snapshot) => {
+                get(child(dbRef, 'books/' + idBook)).then((snapshot) => {
                   if (snapshot.exists()) {
                     res(snapshot.val());
                   } else {
@@ -58,25 +64,7 @@ class Checkout extends React.Component {
                 })
               })
           }))
-        
       }
-    //   getBookData(isbn) {
-    //       return Promise.all(isbn.map(function (isbn){
-    //           return new Promise((resolve,reject) => {
-    //               const dbRef = ref(getDatabase);
-    //               get(child(dbRef, 'books/' + isbn)).once('value', function (snapshot) {
-    //                 return resolve([isbn, snapshot.val()]);
-    //               });
-    //           });
-    //       })).then(function (results) {
-    //           return results.reduce(function (result, item) {
-    //             var key = item[0],
-    //             value = item[1];
-    //             result[key] = value;
-    //             return result;
-    //       }, {});
-    //     });
-    //   }
 
       render() {
         let checkout_list = [];
@@ -92,7 +80,6 @@ class Checkout extends React.Component {
             />
           )
         })
-
 
 
         return (
