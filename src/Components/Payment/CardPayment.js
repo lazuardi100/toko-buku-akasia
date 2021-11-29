@@ -10,7 +10,15 @@ import { useNavigate } from 'react-router-dom';
 function CardPayment({ bank, rekening, logo }) {
   const navigate = useNavigate();
   const handleClick = (bank) => {
-    navigate(`/paymentDetail/${bank}`);
+    navigate(
+      `/paymentDetail/${bank}`,
+      {
+        state: {
+          logo,
+          rekening,
+        }
+      }
+    );
   }
   return (
     <>
