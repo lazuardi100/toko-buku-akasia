@@ -46,7 +46,7 @@ class Checkout extends React.Component {
 
       generatePrice(x) {
         let generatedPrice = parseInt(x * 5 * 10000);
-        return `Rp. ${generatedPrice}`
+        return generatedPrice
       }
 
       getBookData(idBook) {
@@ -67,16 +67,19 @@ class Checkout extends React.Component {
       }
 
       render() {
+        var totalPrice = 0
         let checkout_list = [];
         Object.keys(this.state.book_data).forEach((key) => {
           const data = this.state.book_data[key]
+          totalPrice += parseInt(this.generatePrice(data['average_rating']))
+          let currency = "Rp "
           checkout_list.push(
             <CheckoutItem
               key={key}
               isbn={data['isbn']}
               book_author={data['authors']}
               book_title={data['title']}
-              book_price={this.generatePrice(data['average_rating'])}
+              book_price= {currency.concat(" ", this.generatePrice(data['average_rating']))}
             />
           )
         })
@@ -115,6 +118,10 @@ class Checkout extends React.Component {
                     <br />
                     <br />
                     <Button fullWidth variant="contained" component={Link} to="/payment">Pilih Pembayaran</Button>
+                    <br />
+                    <br />
+                    
+                    <h3>Alamat Pengiriman Rp {totalPrice}</h3>
                 </Container>
             </Box>
         )
