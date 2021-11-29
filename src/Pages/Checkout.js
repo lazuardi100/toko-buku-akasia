@@ -84,7 +84,6 @@ class Checkout extends React.Component {
           )
         })
 
-
         return (
             <Box
                 component="main"
@@ -126,10 +125,6 @@ class Checkout extends React.Component {
             </Box>
         )
       }
-    
-    
 }
-
-
 
 export default Checkout;
