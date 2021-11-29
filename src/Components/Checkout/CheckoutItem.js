@@ -2,19 +2,28 @@ import * as React from 'react';
 import List from '@mui/material/List';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 class CheckoutItem extends React.Component{
     render() {
+        const image_url = `https://covers.openlibrary.org/b/isbn/${this.props.isbn}-M.jpg`
+
+
         return(
             <List>
                 <Card>
                     <Grid container spacing={3}>
                         <Grid item xs="auto">
                             <item>
-                                <Box sx={{ bgcolor: '#cfe8fc', height: '90px', width: '60px', display: 'flex' }}/>
+                            <CardMedia
+                                component="img"
+                                height="240"
+                                image={image_url}
+                                alt={this.props.book_title}
+                                sx={{ objectFit: 'contain' }}
+                            />
                             </item>
                         </Grid>
                         <Grid item xs>
