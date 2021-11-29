@@ -18,21 +18,24 @@ export default function Cart() {
       <CssBaseline />
       <Container maxWidth="md">
         <h2>Keranjang Belanja</h2>
-        <ListCartItem>
-          {cart.map((data, id) => (
-            <CartItem
-              key={id}
-              book_author={data['book_author']}
-              book_title={data['book_title']}
-              book_price={data['book_price']}
-            />
-          ))}
-        </ListCartItem>
-        {cart.forEach(function (value) {
-          totalPrice += value.book_price;
-        })}
-        <h3> Total Pembayaran = Rp.{totalPrice} </h3>
-        <Button alignCenter>Lanjutkan Pembelian</Button>
+        {cart ?
+          <div>
+            <ListCartItem>
+              {cart.map((data, id) => (
+                <CartItem
+                  key={id}
+                  book_author={data['book_author']}
+                  book_title={data['book_title']}
+                  book_price={data['book_price']}
+                />
+              ))}
+            </ListCartItem>
+            {cart.forEach(function (value) {
+              totalPrice += value.book_price;
+            })}
+            <h3> Total Pembayaran = Rp.{totalPrice} </h3>
+            <Button alignCenter>Lanjutkan Pembelian</Button>
+          </div> : "Kosong :("}
       </Container>
     </Box>
   )
