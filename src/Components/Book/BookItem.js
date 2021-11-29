@@ -10,6 +10,26 @@ import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 
 class BookItem extends React.Component {
+  addToCart(isbn, author, title, price, e) {
+    const book_data = {
+      'isbn': isbn,
+      'book_author': author,
+      'book_title': title,
+      'book_price': parseInt(price.slice(4))
+    }
+
+    let currentCart = JSON.parse(localStorage.getItem('tba-cart'))
+    let cart = currentCart === null ? [] : currentCart
+
+    if (Array.isArray(cart)) {
+      cart.push(book_data);
+
+      localStorage.setItem('tba-cart', JSON.stringify(cart));
+    } else {
+      console.err('LocalStorage Error: Saved cart data type is ' + cart.constructor.name);
+    }
+  }
+
   render() {
     return (
       <Grid item sm={4} md={4}>
@@ -34,6 +54,13 @@ class BookItem extends React.Component {
           </CardContent>
           <CardActions>
             <Button size="small" component={Link} to={"/checkout?"+this.props.isbn}>Beli</Button>
+            <Button
+            size="small"
+            onClick={this.addToCart.bind(this, this.props.isbn,
+              this.props.book_author, this.props.book_title, this.props.book_price)}
+            >
+              Add to Cart
+            </Button>
           </CardActions>
         </Card>
       </Grid>
