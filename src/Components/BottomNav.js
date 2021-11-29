@@ -22,7 +22,7 @@ export default function BottomNav() {
         navigate('/cart');
         break;
       default:
-        navigate('/');
+        navigate('/profile');
         break;
     }
   }

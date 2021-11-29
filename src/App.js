@@ -12,6 +12,7 @@ import Payment from './Pages/Payment';
 import Checkout from './Pages/Checkout';
 import PaymentDetail from './Pages/PaymentDetail';
 import Cart from './Pages/Cart';
+import Profile from './Pages/Profile';
 import BottomNav from './Components/BottomNav';
 
 // import {getDatabase, push, ref, child, update} from "firebase/database";
@@ -57,6 +58,7 @@ function App() {
           <Route path='/paymentDetail/:bank' element={<PaymentDetail />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/profile' element={<Profile />} />
         </Routes>
         {/* <Button onClick={prepareData} variant="contained">Import Database</Button> */}
         <BottomNav />
