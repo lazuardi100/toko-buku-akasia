@@ -8,36 +8,13 @@ import Typography from '@mui/material/Typography';
 import CardPayment from '../Components/Payment/CardPayment';
 
 import { useLocation } from "react-router-dom";
+import bank from '../Data/bank';
 
-export default function Home(props) {
-  const {state} = useLocation()
+export default function Payment() {
+  const { state } = useLocation()
   const { price } = state;
-  const bankData = [
-    {
-      "id": 1,
-      "bank": "BNI",
-      "rekening": "0234383278",
-      "logo": "bni.png",
-    },
-    {
-      "id": 2,
-      "bank": "OVO",
-      "rekening": "085748957862",
-      "logo": "ovo.png",
-    },
-    {
-      "id": 3,
-      "bank": "GOPAY",
-      "rekening": "085748957862",
-      "logo": "gopay.png",
-    },
-    {
-      "id": 4,
-      "bank": "DANA",
-      "rekening": "085748957862",
-      "logo": "dana.png",
-    },
-  ];
+  const bankData = bank;
+
   return (
     <Box
       component="main"
@@ -51,7 +28,7 @@ export default function Home(props) {
           textAlign="center"
         >
           <Typography
-            variant="h4"
+            variant="h5"
             fontWeight="bold"
             color="#4B84F1"
           >
@@ -77,6 +54,8 @@ export default function Home(props) {
               bank={data["bank"]}
               rekening={data["rekening"]}
               logo={data["logo"]}
+              biayaAdmin={data["biaya_admin"]}
+              totalPrice={price}
             />
             <br />
           </React.Fragment>

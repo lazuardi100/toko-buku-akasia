@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
-export default function Home() {
+export default function PaymentDetail() {
   // Get state
   const { state } = useLocation();
-  const { logo, rekening } = state;
+  const { logo, rekening, biayaAdmin, totalPrice } = state;
+  console.log(totalPrice)
 
   // Params form URL
   const { bank } = useParams();
@@ -63,8 +64,8 @@ export default function Home() {
         </Box>
         <Typography variant="body1" sx={{ py: "0.5rem" }}>Jam: {time}</Typography>
         <Typography variant="body1" sx={{ py: "0.5rem" }}>Tanggal: {date}</Typography>
-        <Typography variant="body1" sx={{ py: "0.5rem" }}>Jumlah Transfer: Rp. 20000</Typography>
-        <Typography variant="body1" sx={{ py: "0.5rem" }}>Biaya Admin: Gratis</Typography>
+        <Typography variant="body1" sx={{ py: "0.5rem" }}>Jumlah Transfer: Rp. {totalPrice}</Typography>
+        <Typography variant="body1" sx={{ py: "0.5rem" }}>Biaya Admin: {biayaAdmin}</Typography>
         <Button fullWidth variant="contained" sx={{ my: "1.5rem" }} onClick={handleClick}>Bayar</Button>
       </Container>
     </Box >

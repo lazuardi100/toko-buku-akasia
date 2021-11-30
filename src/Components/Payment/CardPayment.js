@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from 'react-router-dom';
 
-function CardPayment({ bank, rekening, logo }) {
+function CardPayment({ bank, rekening, logo, biayaAdmin, totalPrice }) {
   const navigate = useNavigate();
   const handleClick = (bank) => {
     navigate(
@@ -16,6 +16,8 @@ function CardPayment({ bank, rekening, logo }) {
         state: {
           logo,
           rekening,
+          biayaAdmin,
+          totalPrice,
         }
       }
     );
