@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
-// import ListCheckoutItem from "../Components/Checkout/ListCheckoutItem";
+import ListCheckoutItem from "../Components/Checkout/ListCheckoutItem";
 import CheckoutItem from "../Components/Checkout/CheckoutItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -86,32 +86,32 @@ class Checkout extends React.Component {
 
   render() {
     var totalPrice = 0;
-    // let checkout_list = [];
+    let checkout_list = [];
     console.log('book state on render');
     console.log(this.state.books);
-    // let pos = 0;
+    let pos = 0;
 
-    // this.state.books.map((val) => {
-    //   console.log(val);
-    //   totalPrice += parseInt(this.generatePrice(val.average_rating));
-    //   let currency = "Rp ";
-    //   checkout_list.push(
-    //     <CheckoutItem
-    //       key={pos}
-    //       isbn={val.isbn}
-    //       book_author={val.authors}
-    //       book_title={val.title}
-    //       book_price={currency.concat(
-    //         " ",
-    //         this.generatePrice(val.average_rating)
-    //       )}
-    //     />
-    //   );
-    //   pos +=1;
-    // });
+    this.state.books.forEach((val) => {
+      console.log(val);
+      totalPrice += parseInt(this.generatePrice(val.average_rating));
+      let currency = "Rp ";
+      checkout_list.push(
+        <CheckoutItem
+          key={pos}
+          isbn={val.isbn}
+          book_author={val.authors}
+          book_title={val.title}
+          book_price={currency.concat(
+            " ",
+            this.generatePrice(val.average_rating)
+          )}
+        />
+      );
+      pos +=1;
+    });
 
-    // console.log('checkout_list');
-    // console.log(checkout_list);
+    console.log('checkout_list');
+    console.log(checkout_list);
     
     return (
       <Box
@@ -131,15 +131,7 @@ class Checkout extends React.Component {
           />
           <br />
           <br />
-          {this.state.books.map((val, keys) => (
-            <CheckoutItem
-              isbn={val.isbn}
-              book_author={val.authors}
-              book_title={val.title}
-              book_price={"Rp " + this.generatePrice(val.average_rating)}
-            />
-          ))}
-          {/* <ListCheckoutItem>{checkout_list}</ListCheckoutItem> */}
+          <ListCheckoutItem>{checkout_list}</ListCheckoutItem>
           <br />
           <FormControl fullWidth>
             <InputLabel id="select-shipment">Pilih Pengiriman</InputLabel>
