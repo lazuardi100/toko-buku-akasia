@@ -9,8 +9,7 @@ import Grid from '@mui/material/Grid';
 class CheckoutItem extends React.Component{
     render() {
         const image_url = `https://covers.openlibrary.org/b/isbn/${this.props.isbn}-M.jpg`
-
-
+        
         return(
             <List>
                 <Card>

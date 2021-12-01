@@ -11,6 +11,14 @@ import ListCartItem from '../Components/Cart/ListCartItem';
 export default function Cart() {
   let totalPrice = 0;
   const cart = JSON.parse(localStorage.getItem('tba-cart'));
+  let isbnData = ''
+
+  cart.map((data) => {
+    isbnData += `${data['isbn']};`;
+  })
+
+  let checkout = `/checkout?id=${isbnData}`;
+  console.log(checkout)
 
   return (
     <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, }}>
@@ -34,7 +42,7 @@ export default function Cart() {
               totalPrice += value.book_price;
             })}
             <h3> Total Pembayaran = Rp.{totalPrice} </h3>
-            <Button alignCenter>Lanjutkan Pembelian</Button>
+            <Button alignCenter href={checkout}>Lanjutkan Pembelian</Button>
           </div> : "Kosong :("}
       </Container>
     </Box>
