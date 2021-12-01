@@ -13,7 +13,7 @@ export default function Cart() {
   const cart = JSON.parse(localStorage.getItem('tba-cart'));
   let isbnData = ''
 
-  cart.map((data) => {
+  cart.forEach((data) => {
     isbnData += `${data['isbn']};`;
   })
 
