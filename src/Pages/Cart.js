@@ -78,7 +78,7 @@ class Cart extends React.Component {
               <ListCartItem>
                 {this.state.cart.map((data, id) => (
                   <CartItem
-                    key={data['book_id']}
+                    key={data['book_id']+id}
                     book_id={data['book_id']}
                     book_author={data['book_author']}
                     book_title={data['book_title']}
