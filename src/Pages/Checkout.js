@@ -41,14 +41,14 @@ class Checkout extends React.Component {
     this.getBookData = this.getBookData.bind(this);
   }
 
-  getParams () {
+  getParams() {
     let parameter = new URLSearchParams(window.location.search);
     const paramId = parameter.get("id");
     return paramId.split(";");
   }
 
   componentDidMount() {
-   this.getBookData(this.getParams());
+    this.getBookData(this.getParams());
   }
 
   generatePrice(x) {
@@ -58,36 +58,35 @@ class Checkout extends React.Component {
 
   getBookData(idBook) {
     const tempData = [];
-    
+
     idBook.forEach((book) => {
-        const db = getDatabase();
-        const dbref = query(
-          ref(db, "books"),
-          orderByChild("isbn"),
-          equalTo(book)
-        );
+      const db = getDatabase();
+      const dbref = query(
+        ref(db, "books"),
+        orderByChild("isbn"),
+        equalTo(book)
+      );
 
-        onValue(dbref, (snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-            // const childKey = childSnapshot.key;
-            const childData = childSnapshot.val();
+      onValue(dbref, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          // const childKey = childSnapshot.key;
+          const childData = childSnapshot.val();
 
-            tempData.push(childData);
-          });
+          tempData.push(childData);
+        });
+        console.log(tempData);
+
+        this.setState({
+          books: tempData,
         });
       });
-
-    console.log(tempData);
-
-    this.setState({
-      books: tempData,
     });
   }
 
   render() {
     var totalPrice = 0;
     let checkout_list = [];
-    console.log('book state on render');
+    console.log("book state on render");
     console.log(this.state.books);
     let pos = 0;
 
@@ -107,12 +106,12 @@ class Checkout extends React.Component {
           )}
         />
       );
-      pos +=1;
+      pos += 1;
     });
 
-    console.log('checkout_list');
+    console.log("checkout_list");
     console.log(checkout_list);
-    
+
     return (
       <Box
         component="main"
