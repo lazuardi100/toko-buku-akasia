@@ -16,23 +16,14 @@ import { useNavigate } from "react-router-dom";
 import {
   getDatabase,
   ref,
-  query,
-  orderByChild,
-  equalTo,
-  onValue,
+  child,
+  get
 } from "firebase/database";
 
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      book_data: {
-        test: {
-          authors: "Alice",
-          title: "Sample Book",
-          average_rating: "5",
-        },
-      },
       books: [],
     };
 
@@ -48,7 +39,11 @@ class Checkout extends React.Component {
   }
 
   componentDidMount() {
-    this.getBookData(this.getParams());
+    this.getBookData(this.getParams()).then((res) => {
+      this.setState({
+        books: res
+      })
+    })
   }
 
   generatePrice(x) {
@@ -57,41 +52,28 @@ class Checkout extends React.Component {
   }
 
   getBookData(idBook) {
-    const tempData = [];
-
-    idBook.forEach((book) => {
-      const db = getDatabase();
-      const dbref = query(
-        ref(db, "books"),
-        orderByChild("isbn"),
-        equalTo(book)
-      );
-
-      onValue(dbref, (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-          // const childKey = childSnapshot.key;
-          const childData = childSnapshot.val();
-
-          tempData.push(childData);
-        });
-        console.log(tempData);
-
-        this.setState({
-          books: tempData,
-        });
-      });
-    });
+    return Promise.all(idBook.map(function (book_id) {
+      return new Promise((res, rej) => {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, 'books/' + book_id)).then((snapshot) => {
+          if (snapshot.exists()) {
+            res(snapshot.val());
+          } else {
+            rej("No data available")
+          }
+        }).catch((err) => {
+          rej(err)
+        })
+      })
+    }))
   }
 
   render() {
     var totalPrice = 0;
     let checkout_list = [];
-    console.log("book state on render");
-    console.log(this.state.books);
     let pos = 0;
 
     this.state.books.forEach((val) => {
-      console.log(val);
       totalPrice += parseInt(this.generatePrice(val.average_rating));
       let currency = "Rp ";
       checkout_list.push(
@@ -108,9 +90,6 @@ class Checkout extends React.Component {
       );
       pos += 1;
     });
-
-    console.log("checkout_list");
-    console.log(checkout_list);
 
     return (
       <Box
@@ -151,7 +130,6 @@ class Checkout extends React.Component {
           />
           <br />
           <br />
-          {/* <Button fullWidth variant="contained" component={Link} to="/payment">Pilih Pembayaran</Button> */}
           <Button
             fullWidth
             variant="contained"
